@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+import axios from 'axios';
+import React from 'react';
 import './App.css';
 
 function App() {
+  const [pname, setname] = React.useState('')
+  const onSubmit = e => {
+    e.preventDefault();
+    const data = {
+      name: pname
+    }
+    axios.post('http://localhost:3000/users/save', data,{
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+      }
+    })
+      .then(res => console.log(res))
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <p>Enter name to send to server</p>
+      <input type='text' value={pname} onChange={e => setname(e.target.value)} placeholder='Enter Name' />
+      <input type='submit' onClick={(e) => onSubmit(e)} />
     </div>
   );
 }
