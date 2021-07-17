@@ -3,25 +3,30 @@ import React from 'react';
 import './App.css';
 
 function App() {
-  const [pname, setname] = React.useState('')
+  const [email, setemail] = React.useState('');
+  const [response, setresponse] = React.useState('')
+
   const onSubmit = e => {
     e.preventDefault();
     const data = {
-      name: pname
+      email: email,
     }
-    axios.post('http://localhost:3000/users/save', data,{
+    axios.post('http://localhost:3000/users/forgotpassword', data, {
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
       }
     })
-      .then(res => console.log(res))
+      .then(res => setresponse(res.data))
   }
+
+
+
   return (
     <div>
-      <p>Enter name to send to server</p>
-      <input type='text' value={pname} onChange={e => setname(e.target.value)} placeholder='Enter Name' />
-      <input type='submit' onClick={(e) => onSubmit(e)} />
+      <input type='email' value={email} onChange={(e) => setemail(e.target.value)} />
+      <input type="submit" onClick={e => onSubmit(e)} />
+      <p>{response ? JSON.stringify(response) : 'Email Not Yet Sent'}</p>
     </div>
   );
 }
