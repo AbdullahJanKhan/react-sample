@@ -3,13 +3,12 @@ var router = express.Router();
 var nodemailer = require('nodemailer');
 /* GET users listing. */
 
-const sender = 'youremail';
 
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: sender,
-    pass: 'yourpassword'
+    user: process.env.SENDER_EMAIL,
+    pass: process.env.SENDER_PASSWORD
   }
 });
 
@@ -20,8 +19,10 @@ router.get('/', function (req, res, next) {
 router.post('/forgotpassword', (req, res) => {
   const email = req.body.email;
   console.log(req.body)
+  console.log(typeof (process.env.SENDER_EMAIL))
+  console.log(typeof (process.env.SENDER_PASSWORD))
   var mailOptions = {
-    from: sender,
+    from: process.env.SENDER_EMAIL,
     to: email,
     subject: 'Sending Email using Node.js',
     text: 'That was easy!'

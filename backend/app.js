@@ -6,6 +6,7 @@ var logger = require('morgan');
 var CORS = require('cors')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var dotenv = require('dotenv').config({ path: __dirname + '/.env' });
 
 var app = express();
 
