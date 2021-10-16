@@ -5,6 +5,7 @@ import img from './asset/temp.jpg';
 import Drawer from "./component/drawer";
 import Popup from "./component/popup";
 // import { Page } from 'pano'
+import ThreeSixty from 'react-360-view'
 
 {
   // function App() {
@@ -39,9 +40,14 @@ import Popup from "./component/popup";
 
 function App() {
   // <pano width="1024" height="512" src={img} caption="Equirectangular Panorama" />
+  // <Drawer />
   return (
     <div>
-      <Drawer />
+      <ThreeSixty
+        amount={36}
+        imagePath="C:\Users\abdul\Desktop\sample-react\src\asset\1.jpeg"
+        fileName="1.jpeg"
+      />
     </div>
   )
 }
