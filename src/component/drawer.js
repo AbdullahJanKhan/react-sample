@@ -10,6 +10,9 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import MailIcon from '@material-ui/icons/Mail';
+import Modal from '@material-ui/core/Modal';
+
+import Popup from "./popup";
 
 const drawerWidth = 180;
 
@@ -30,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
         background: "#000",
         color: "#fff",
         alignContent: "center",
-        overflow: "hidden"
+        overflowY: "scroll"
         // box- shadow: 6px 6px 12px rgba(0, 0, 0, 0.16);
     },
     // necessary for content to be below app bar
@@ -42,8 +45,18 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+
+
 export default function DrawerCmp() {
     const classes = useStyles();
+    const [model, setmodel] = React.useState({
+        open: false,
+        num: 0,
+    })
+
+    const handleClose = () => {
+        setmodel({ ...model, open: false });
+    };
     return (
         <Grid>
             <CssBaseline />
@@ -69,21 +82,54 @@ export default function DrawerCmp() {
                         <Typography variant="body1">Navigation</Typography>
                     </ListItem>
                     <Divider />
-                    <ListItem button style={{ backgroundColor: "#24292e", margin: "5px 0px 5px 0px" }}>
+                    <ListItem
+                        button
+                        style={{
+                            backgroundColor: "#24292e",
+                            margin: "5px 0px 5px 0px"
+                        }}
+                        onClick={() => setmodel({
+                            ...model,
+                            open: true,
+                            num: 1
+                        })}
+                    >
                         <ListItemIcon>
                             <MailIcon color="#fff" />
                         </ListItemIcon>
                         <Typography variant="body1">Image</Typography>
                     </ListItem>
                     <Divider />
-                    <ListItem button style={{ backgroundColor: "#24292e", margin: "5px 0px 5px 0px" }}>
+                    <ListItem
+                        button
+                        style={{
+                            backgroundColor: "#24292e",
+                            margin: "5px 0px 5px 0px"
+                        }}
+                        onClick={() => setmodel({
+                            ...model,
+                            open: true,
+                            num: 2,
+                        })}
+                    >
                         <ListItemIcon>
                             <MailIcon color="#fff" />
                         </ListItemIcon>
                         <Typography variant="body1">Video</Typography>
                     </ListItem>
                     <Divider />
-                    <ListItem button style={{ backgroundColor: "#24292e", margin: "5px 0px 5px 0px" }}>
+                    <ListItem
+                        button
+                        style={{
+                            backgroundColor: "#24292e",
+                            margin: "5px 0px 5px 0px"
+                        }}
+                        onClick={() => setmodel({
+                            ...model,
+                            open: true,
+                            num: 3
+                        })}
+                    >
                         <ListItemIcon>
                             <MailIcon color="#fff" />
                         </ListItemIcon>
@@ -150,6 +196,26 @@ export default function DrawerCmp() {
                     </ListItem>
                 </List>
             </Drawer>
+            <Modal
+                open={model.open}
+                onClose={handleClose}
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+            >
+                <Grid
+                    item
+                    xs={8}
+                    style={{
+                        alignItem: "center",
+                        justifyContent: "center",
+                        margin: "auto",
+                        marginTop: "90px",
+                    }}
+                >
+
+                    <Popup num={model.num} />
+                </Grid>
+            </Modal>
         </Grid>
     )
 }

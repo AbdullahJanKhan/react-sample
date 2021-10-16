@@ -3,7 +3,8 @@ import React from 'react';
 import './App.css';
 import img from './asset/temp.jpg';
 import Drawer from "./component/drawer";
-import { Page } from 'pano'
+import Popup from "./component/popup";
+// import { Page } from 'pano'
 
 {
   // function App() {
@@ -37,12 +38,10 @@ import { Page } from 'pano'
 }
 
 function App() {
-  // <Drawer />
-  const panoPage = new Page('pano')
-  panoPage.init()
+  // <pano width="1024" height="512" src={img} caption="Equirectangular Panorama" />
   return (
     <div>
-      <pano width="1024" height="512" src={img} caption="Equirectangular Panorama" />
+      <Drawer />
     </div>
   )
 }
