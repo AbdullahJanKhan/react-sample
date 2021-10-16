@@ -2,18 +2,16 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
+import MailIcon from '@material-ui/icons/Mail';
 
-const drawerWidth = 150;
+const drawerWidth = 180;
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,7 +28,9 @@ const useStyles = makeStyles((theme) => ({
     drawerPaper: {
         width: drawerWidth,
         background: "#000",
-        color: "#fff"
+        color: "#fff",
+        alignContent: "center",
+        overflow: "hidden"
         // box- shadow: 6px 6px 12px rgba(0, 0, 0, 0.16);
     },
     // necessary for content to be below app bar
@@ -47,13 +47,6 @@ export default function DrawerCmp() {
     return (
         <Grid>
             <CssBaseline />
-            <AppBar position="fixed" className={classes.appBar}>
-                <Toolbar>
-                    <Typography variant="h6" noWrap>
-                        Permanent drawer
-                    </Typography>
-                </Toolbar>
-            </AppBar>
             <Drawer
                 className={classes.drawer}
                 variant="permanent"
@@ -62,50 +55,98 @@ export default function DrawerCmp() {
                 }}
                 anchor="left"
             >
-                <div className={classes.toolbar} />
+                <Typography variant="body1" style={{ textAlign: "center", padding: "5px" }}>LOGO</Typography>
                 <Divider />
                 <List>
                     <ListItem>
-                        <Typography variant="body1">Markers</Typography>
+                        <Typography variant="body1" style={{ color: "#00adee", margin: "auto", padding: "5px" }}>Markers</Typography>
                     </ListItem>
                     <Divider />
-                    <ListItem button>
+                    <ListItem button style={{ backgroundColor: "#24292e", margin: "5px 0px 5px 0px" }}>
+                        <ListItemIcon>
+                            <MailIcon color="#fff" />
+                        </ListItemIcon>
                         <Typography variant="body1">Navigation</Typography>
                     </ListItem>
                     <Divider />
-                    <ListItem button>
+                    <ListItem button style={{ backgroundColor: "#24292e", margin: "5px 0px 5px 0px" }}>
+                        <ListItemIcon>
+                            <MailIcon color="#fff" />
+                        </ListItemIcon>
                         <Typography variant="body1">Image</Typography>
                     </ListItem>
                     <Divider />
-                    <ListItem button>
+                    <ListItem button style={{ backgroundColor: "#24292e", margin: "5px 0px 5px 0px" }}>
+                        <ListItemIcon>
+                            <MailIcon color="#fff" />
+                        </ListItemIcon>
                         <Typography variant="body1">Video</Typography>
                     </ListItem>
                     <Divider />
-                    <ListItem button>
+                    <ListItem button style={{ backgroundColor: "#24292e", margin: "5px 0px 5px 0px" }}>
+                        <ListItemIcon>
+                            <MailIcon color="#fff" />
+                        </ListItemIcon>
                         <Typography variant="body1">3D Model</Typography>
                     </ListItem>
                     <Divider />
-                    <ListItem button>
+                    <ListItem button style={{ backgroundColor: "#24292e", margin: "5px 0px 5px 0px" }}>
+                        <ListItemIcon>
+                            <MailIcon color="#fff" />
+                        </ListItemIcon>
                         <Typography variant="body1">Embedded</Typography>
                     </ListItem>
                     <Divider />
+                </List>
+                <List>
                     <ListItem>
-                        <Button variant="outlined">Undo</Button>
+                        <Button
+                            fullWidth
+                            variant="outlined"
+                            color='primary'
+                            style={{ color: "#fff", borderWidth: "2px", backgroundColor: "#24292e" }}
+                            startIcon={<MailIcon color="#fff" />}
+                        >Undo</Button>
                     </ListItem>
                     <ListItem>
-                        <Button variant="outlined">Redo</Button>
+                        <Button
+                            fullWidth
+                            variant="outlined"
+                            color='primary'
+                            style={{ color: "#fff", borderWidth: "2px", backgroundColor: "#24292e" }}
+                            startIcon={<MailIcon color="#fff" />}>Redo</Button>
                     </ListItem>
                     <ListItem>
-                        <Button variant="outlined">Preview</Button>
+                        <Button
+                            fullWidth
+                            variant="outlined"
+                            color='primary'
+                            style={{ color: "#fff", borderWidth: "2px", backgroundColor: "#24292e" }}
+                        >Preview</Button>
                     </ListItem>
                     <ListItem>
-                        <Button variant="outlined">Save</Button>
+                        <Button
+                            fullWidth
+                            variant="outlined"
+                            color='primary'
+                            style={{ color: "#fff", borderWidth: "2px", backgroundColor: "#24292e" }}
+                        >Save</Button>
                     </ListItem>
                     <ListItem>
-                        <Button variant="outlined">Publish</Button>
+                        <Button
+                            fullWidth
+                            variant="contained"
+                            color='primary'
+                            style={{ color: "#fff", borderWidth: "2px" }}
+                        >Publish</Button>
                     </ListItem>
                     <ListItem>
-                        <Button variant="outlined">Back</Button>
+                        <Button
+                            fullWidth
+                            variant="outlined"
+                            color='secondary'
+                            style={{ color: "#f00", borderWidth: "2px", backgroundColor: "#24292e" }}
+                        >Back</Button>
                     </ListItem>
                 </List>
             </Drawer>
